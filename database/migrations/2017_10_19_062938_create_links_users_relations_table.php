@@ -15,7 +15,7 @@ class CreateLinksUsersRelationsTable extends Migration
     {
         Schema::create('links_users_relations', function (Blueprint $table) {
             $table->bigInteger('link_id')->unsigned();
-            $table->bigInteger('user_id')->unsigned();
+            $table->integer('user_id')->unsigned();
 
             $table->foreign('link_id')->references('id')->on('links');
             $table->foreign('user_id')->references('id')->on('users');
