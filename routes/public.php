@@ -1,3 +1,3 @@
 <?php
 
-Route::get('{key}', 'LinkTrackingController@redirectToLink')->where(['key' => '[^home|^links]']);
+Route::get('/{key}', 'LinkTrackingController@redirectToLink')->where(['key' => '^(?!home|links).*']);
