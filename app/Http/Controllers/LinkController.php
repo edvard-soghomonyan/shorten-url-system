@@ -34,6 +34,7 @@ class LinkController extends Controller
             Session::forget('shortenLink');
 
         }
+
         return view('links.list', $data);
     }
 
@@ -68,16 +69,14 @@ class LinkController extends Controller
 
         $url = trim($request->get('link'));
 
-        $link = Link::firstOrCreate([
+        $link = Link::create([
             'url' => $url
         ]);
 
-        LinksUsersRelation::firstOrCreate([
+        LinksUsersRelation::create([
             'user_id' => Auth::id(),
             'link_id' => $link->id
         ]);
-
-//        session()->flash('shorten', url(UrlShortener::toBase($link->id)));
 
         Session::put('shortenLink', url(UrlShortener::toBase($link->id)));
 
